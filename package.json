@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "npm run dev --workspace server",
     "dev:server": "npm run dev --workspace server",
-    "start": "npm run start --workspace server"
+    "start": "npm run start --workspace server",
+    "dev:client": "npm run start --workspace client",
+    "build:client": "npm run build --workspace client",
+    "client:cap:sync": "npm run cap:sync --workspace client",
+    "client:cap:add:android": "npm run cap add android --workspace client",
+    "client:cap:add:ios": "npm run cap add ios --workspace client",
+    "client:cap:open:android": "npm run cap open android --workspace client"
   },
   "keywords": [],
   "author": "",

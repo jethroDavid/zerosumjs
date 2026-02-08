@@ -10,7 +10,7 @@ import todoRoutes from './routes/todos';
 import { errorHandler } from './middleware/error';
 
 const app = express();
-const logger = pino({ name: 'zerosumjs-api' });
+const logger = pino({ name: 'server-api' });
 
 app.use(helmet());
 app.use(
