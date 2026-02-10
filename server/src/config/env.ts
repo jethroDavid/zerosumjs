@@ -1,6 +1,3 @@
-import path from 'path';
-import dotenv from 'dotenv';
-
 type GoogleConfig = {
   clientId: string;
   clientSecret: string;
@@ -15,18 +12,16 @@ type AppConfig = {
   jwtExpiresIn: string;
   clientOrigin: string;
   google: GoogleConfig;
+  xaiApiKey: string;
 };
-
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
-
-dotenv.config({ path: path.resolve(__dirname, '../../', envFile) });
 
 const required = [
   'MONGODB_URI',
   'JWT_SECRET',
   'GOOGLE_CLIENT_ID',
   'GOOGLE_CLIENT_SECRET',
-  'GOOGLE_CALLBACK_URL'
+  'GOOGLE_CALLBACK_URL',
+  'XAI_API_KEY'
 ];
 
 const missing = required.filter((key) => !process.env[key]);
@@ -45,5 +40,6 @@ export const config: AppConfig = {
     clientId: process.env.GOOGLE_CLIENT_ID as string,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     callbackUrl: process.env.GOOGLE_CALLBACK_URL as string
-  }
+  },
+  xaiApiKey: process.env.XAI_API_KEY as string,
 };

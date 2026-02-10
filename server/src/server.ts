@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -7,6 +8,7 @@ import { config } from './config/env';
 import { passport } from './config/passport';
 import authRoutes from './routes/auth';
 import todoRoutes from './routes/todos';
+import agentRoutes from './routes/agent';
 import { errorHandler } from './middleware/error';
 
 const app = express();
@@ -28,6 +30,7 @@ app.get('/health', (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/todos', todoRoutes);
+app.use('/api/agent', agentRoutes);
 
 app.use('/api/auth/google/failure', (_req, res) => {
   res.status(401).json({ message: 'Google authentication failed' });
